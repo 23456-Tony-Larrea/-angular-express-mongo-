@@ -1,0 +1,34 @@
+<div class="container mt-5">
+   <div class="row">
+       <div class="card">
+           <div class="card-body text-center">
+               <span class="titulo">Lista Usuarios</span>
+               <button class=" btn btn-success float-end" routerLink="/create-user">Nuevo</button>
+               <table *ngIf="listUser.length>0" class="table table-striped mt-3">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col">Ciudad</th>
+                    <th scope="col">Provincia</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of listUser">
+                    <th scope="row">{{user.name}}</th>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.age}}</td>
+                    <td>{{user.country}}</td>
+                    <td>{{user.province}}</td>
+                    <td><i class="fas fa-trash text-danger" (click)="deleteUser(user._id)"></i>
+                    <i [routerLink]="['/edit-user',user._id]" class="fas fa-user-edit text-primary" ></i></td>
+                  </tr>
+                   </tbody>
+              </table>
+           <h5 style="text-align: start; margin-top: 10px;" *ngIf="listUser.length==0">No hay datos para mostrar</h5>
+            </div>
+       </div>
+   </div> 
+</div>
